@@ -36,6 +36,8 @@ export default function Form(props) {
                         type='text'
                     />
                 </label>
+                <div>{errors.name}</div>
+                <div>{errors.email}</div>
             </div>
 
             <div className='form-col pass'>
@@ -47,7 +49,7 @@ export default function Form(props) {
                         type='text'
                     />
                 </label>
-
+                <div>{errors.password}</div>
             </div>
 
             <div className='form-col TOS'>
@@ -60,12 +62,12 @@ export default function Form(props) {
                         onChange={onChange}
                     />
                 </label>
+                <div>{errors.termsOfService}</div>
             </div>
 
             <div className='form-col submit'>
                 <h3>Add a User</h3>
                 <button disabled={disabled}>Submit</button>
-                {/* error messages will go here */}
             </div>
 
         </form>

@@ -43,6 +43,11 @@ code {
   padding: 4%;
 }
 
+.user {
+  width: 30%;
+  margin-top: 1%;
+}
+
 label {
   display: flex;
   margin-bottom: 16px;
