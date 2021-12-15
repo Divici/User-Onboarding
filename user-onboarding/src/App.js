@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import './App.css';
 import Form from './components/Form';
 import axios from 'axios';
-// import schema from '../validation/formSchema';
+import schema from './validation/formSchema';
 import * as yup from 'yup';
 
 const initialFormValues = {
