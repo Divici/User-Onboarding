@@ -28,14 +28,44 @@ export default function Form(props) {
                         type='text'
                     />
                 </label>
+                <label>Email:
+                    <input
+                        value={values.email}
+                        onChange={onChange}
+                        name='email'
+                        type='text'
+                    />
+                </label>
             </div>
 
             <div className='form-col pass'>
+                <label>Password:
+                    <input
+                        value={values.password}
+                        onChange={onChange}
+                        name='password'
+                        type='text'
+                    />
+                </label>
 
             </div>
 
             <div className='form-col TOS'>
+                <h4>Please Accept the Terms of Service</h4>
+                <label> You have read and agree to the terms
+                    <input
+                        type='checkbox'
+                        name='termsOfService'
+                        checked={values.termsOfService}
+                        onChange={onChange}
+                    />
+                </label>
+            </div>
 
+            <div className='form-col submit'>
+                <h3>Add a User</h3>
+                <button disabled={disabled}>Submit</button>
+                {/* error messages will go here */}
             </div>
 
         </form>

@@ -18,20 +18,33 @@ code {
 
 .form-container{
   display: flex;
+  justify-content: space-between;
   border: 1px solid rgb(210, 210, 210);
   border-radius: 4px;
   box-shadow: 0px 1px 6px -2px rgb(128, 127, 127);
   padding: 1%;
   background-color: white;
-  margin-bottom: 1%;
+  margin: 0 auto;
 }
 
 .form-col {
   padding: 0 2%;
   display: flex;
   flex-direction: column;
+  width: 20%;
 }
 
-.input {
+.form-col:hover {
+  background-color: rgb(228, 228, 228);
+}
+
+.pass {
+  margin: auto;
+  padding: 4%;
+}
+
+label {
+  display: flex;
+  margin-bottom: 16px;
   justify-content: space-between;
 }
