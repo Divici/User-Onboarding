@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import React, {useState, useEffect} from 'react'
 import './App.css';
 import Form from './components/Form';
@@ -49,8 +48,12 @@ function App() {
       password: formValues.password.trim(),
       termsOfService: !!formValues.termsOfService,
     }
-    setUsers(users.concat(newUser));
-    setFormValues(initialFormValues);
+    axios.post('https://reqres.in/api/users', newUser)
+      .then(resp=>{
+        setUsers([resp.data, ...users]);
+      })
+      .catch(err=> console.error(err))
+      .finally(()=>setFormValues(initialFormValues))    
   }
 
   useEffect(()=>{
