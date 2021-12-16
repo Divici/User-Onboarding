@@ -38,7 +38,7 @@ describe('User Onboarding App', () => {
         tosCheckbox().should('exist');
       })
     
-    describe('Filling out inputs and then cancelling them', ()=>{
+    describe('Filling out inputs and checkbox', ()=>{
         it('can navigate to the site', () => {
             cy.url().should('include', 'localhost');
         })
@@ -72,15 +72,25 @@ describe('User Onboarding App', () => {
                 .should('be.checked')
         })
 
-        it('the submit button enables when all inputs are filled out', () => {
+    })
+
+    describe('Submitting a new user', () => {
+        it('the user can not submit the form if email is not filled in', () => {
+            nameInput().type('David Aihe');
+            passwordInput().type('anotherPassword');
+            tosCheckbox().check();
+            submitBtn().should('be.disabled');
+        })
+
+        it('the user can submit the form data', () => {
             nameInput().type('Daniel Salazar');
             emailInput().type('danielsal@gmail.com');
             passwordInput().type('newPassword1234');
             tosCheckbox().check();
             submitBtn().should('not.be.disabled');
+            submitBtn().click();
         })
     })
-
 
 
 
