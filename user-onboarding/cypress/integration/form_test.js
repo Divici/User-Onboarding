@@ -27,13 +27,59 @@ describe('User Onboarding App', () => {
     const nameInput = () => cy.get('input[name=name]');
     const emailInput = () => cy.get('input[name=email]');
     const passwordInput = () => cy.get('input[name=password]');
+    const tosCheckbox = () => cy.get('input[name=termsOfService]');
+    const submitBtn = () => cy.get('button[id="submitBtn"]');
 
     it('the proper elements are showing', () => {
         nameInput().should('exist');
         emailInput().should('exist');
         passwordInput().should('exist');
+        submitBtn().should('exist');
+        tosCheckbox().should('exist');
       })
+    
+    describe('Filling out inputs and then cancelling them', ()=>{
+        it('can navigate to the site', () => {
+            cy.url().should('include', 'localhost');
+        })
 
+        it('submit button starts out disabled', () => {
+            submitBtn().should('be.disabled');
+        })
+
+        it('can enter in the inputs', ()=>{
+            nameInput()
+                .should('have.value', '')
+                .type('Daniel Salazar')
+                .should('have.value', 'Daniel Salazar')
+
+            emailInput()
+                .should('have.value', '')
+                .type('danielsal@gmail.com')
+                .should('have.value', 'danielsal@gmail.com')
+
+            passwordInput()
+                .should('have.value', '')
+                .type('password123')
+                .should('have.value', 'password123')
+
+        })
+
+        it('can check the TOS box', ()=>{
+            tosCheckbox()
+                .should('not.be.checked')
+                .check()
+                .should('be.checked')
+        })
+
+        it('the submit button enables when all inputs are filled out', () => {
+            nameInput().type('Daniel Salazar');
+            emailInput().type('danielsal@gmail.com');
+            passwordInput().type('newPassword1234');
+            tosCheckbox().check();
+            submitBtn().should('not.be.disabled');
+        })
+    })
 
 
 
